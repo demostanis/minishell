@@ -26,7 +26,7 @@ for file in "$cwd"/test_*.c; do
 	# if the children have errors
 	echo -n "$name... "
 	valgrind \
-		--log-file="$logfile" \
+		--log-file="$logfile" --track-fds=yes \
 		--suppressions="$cwd"/readline-leaks.sup \
 		--trace-children=yes --show-leak-kinds=all \
 		--error-markers="$marker" --leak-check=full ./"$name"
