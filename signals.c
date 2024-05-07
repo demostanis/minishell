@@ -36,7 +36,12 @@ static void	handle_signals(int signal)
 		}
 	}
 	else if (signal == SIGQUIT)
-		ft_putstr_fd("\b\b \b  \b\b", STDOUT_FILENO);
+	{
+		if (any_command_active(-1))
+			ft_putendl_fd("Quit", STDOUT_FILENO);
+		else
+			ft_putstr_fd("\b\b \b  \b\b", STDOUT_FILENO);
+	}
 }
 
 void	setup_signals(void)
